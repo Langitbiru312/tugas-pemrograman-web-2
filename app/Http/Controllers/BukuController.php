@@ -12,7 +12,11 @@ class BukuController extends Controller
      */
     public function index()
     {
-        //
+    
+        return view('buku.index', [
+            'title' => 'Buku',
+            'bukus' => Buku::all(),
+            ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        //
+        return view('buku.create', ['title' => 'Create Buku']);
     }
 
     /**
