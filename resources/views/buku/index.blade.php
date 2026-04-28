@@ -18,6 +18,8 @@
                 {{ $loop->iteration }}. {{ $buku->id_buku }} -- {{ $buku->judul_buku }} -- {{ $buku->penulis }} --
                 {{ $buku->penerbit }} --
                 {{ $buku->tanggal_terbit }}
+                <a class="btn btn-warning btn-sm" href="{{ route('buku.edit', $buku) }}" role="button">edit</a>
+
             </li>
         @endforeach
 

@@ -10,8 +10,9 @@ class Buku extends Model
 {
     /** @use HasFactory<\Database\Factories\BukuFactory> */
     use HasFactory;
-
+    
 
     //protected $fillable = ['id_buku', 'judul_buku', 'penulis', 'penerbit', 'Tahun_terbit'];
     //protected $guarded = ['id'];
 }
+

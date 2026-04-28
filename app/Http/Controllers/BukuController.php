@@ -69,7 +69,10 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        //
+       return view('buku.edit', [
+            'title' => 'Edit Buku',
+            'buku' => $buku,
+            ]);
     }
 
     /**
@@ -77,7 +80,28 @@ class BukuController extends Controller
      */
     public function update(Request $request, Buku $buku)
     {
-        //
+         $validated = $request->validate([
+        'id_buku' => 'required|digits:4|numeric',
+        'judul_buku' => 'required',
+        'penulis' => 'required',
+        'penerbit' => 'required',
+        'tanggal_terbit' => 'required|date',
+        
+    ], [
+           'id_buku.required' => 'id tidak boleh kosong',
+           'id_buku.digits' => 'id_buku wajib :digits digit',
+           'id_buku.numeric' => 'id_buku wajib angka',
+           'judul_buku.required' => 'judul buku tidak boleh kosong',
+           'penulis.required' => 'penulis tidak boleh kosong',
+           'penerbit.required' => 'penerbit tidak boleh kosong',
+           'tanggal_terbit.required' => 'tanggal terbit tidak boleh kosong',
+           'tanggal_terbit.date' => 'tanggal terbit tidak boleh kosong',
+
+    ]);
+
+    $buku->update($validated);
+    
+    return to_route('buku.index')->withSuccess('Data berhasil di ubah');
     }
 
     /**
