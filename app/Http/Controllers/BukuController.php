@@ -15,7 +15,8 @@ class BukuController extends Controller
     
         return view('buku.index', [
             'title' => 'Buku',
-            'bukus' => Buku::all(),
+           'bukus' => Buku::latest()->get(),
+            //'bukus' => Buku::orderBy('judul_buku', 'asc')->get(),
             ]);
     }
 
@@ -109,6 +110,8 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-        //
+         $buku->delete($buku);
+    
+    return to_route('buku.index')->withSuccess('Data berhasil di hapus');
     }
 }
