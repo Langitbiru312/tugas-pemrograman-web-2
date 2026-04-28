@@ -18,12 +18,13 @@ class BukuFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_buku' => fake()->name(),
-            'judul_buku' => fake()->name(),
+            'id_buku' =>  fake()->numerify('####'),
+            'judul_buku' => fake()->randomElement(['Alvaska','Hilmy milan','Halemorra','im not antagonis',
+            'Sagala','Alan','Mariposa','Antariksa','juandara','Melodylan','Ruang hati']),
             'penulis' => fake()->name(),
-            'penerbit' => fake()->name(),
-            'Tahun_terbit' => fake()->numerify('####'),
-            
+            'penerbit' => fake()->randomElement(['Bukune','Akad','Loveble','Coconut books','Republik']),
+            'tanggal_terbit' => fake()->dateTimeBetween()
+        
         ];
     }
 }

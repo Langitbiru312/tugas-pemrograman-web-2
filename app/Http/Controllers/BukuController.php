@@ -32,7 +32,28 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validated = $request->validate([
+        'id_buku' => 'required|digits:4|numeric',
+        'judul_buku' => 'required',
+        'penulis' => 'required',
+        'penerbit' => 'required',
+        'tanggal_terbit' => 'required|date',
+        
+    ], [
+           'id_buku.required' => 'id tidak boleh kosong',
+           'id_buku.digits' => 'id_buku wajib :digits digit',
+           'id_buku.numeric' => 'id_buku wajib angka',
+           'judul_buku.required' => 'judul buku tidak boleh kosong',
+           'penulis.required' => 'penulis tidak boleh kosong',
+           'penerbit.required' => 'penerbit tidak boleh kosong',
+           'tanggal_terbit.required' => 'tanggal terbit tidak boleh kosong',
+           'tanggal_terbit.date' => 'tanggal terbit tidak boleh kosong',
+
+    ]);
+
+    Buku::create($validated);
+    
+    return to_route('buku.index')->withSuccess('Data berhasil di tambahkan');
     }
 
     /**

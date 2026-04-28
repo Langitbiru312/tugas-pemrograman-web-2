@@ -2,12 +2,22 @@
 
 
     <x-slot:title> {{ $title }}</x-slot>
+
+    @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
+
+
+    <a class="btn btn-primary mb-3" href="{{ route('buku.create') }}" role="button">Create</a>
+
     <ul class="list-group">
         @foreach ($bukus as $buku)
             <li class="list-group-item">
                 {{ $loop->iteration }}. {{ $buku->id_buku }} -- {{ $buku->judul_buku }} -- {{ $buku->penulis }} --
                 {{ $buku->penerbit }} --
-                {{ $buku->Tahun_terbit }}
+                {{ $buku->tanggal_terbit }}
             </li>
         @endforeach
 
