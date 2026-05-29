@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -14,9 +15,11 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-        $this->call([
-            BukuSeeder::class,
-        ]);
-    }
+{
+    \App\Models\Kategori::factory(10)->create();
+
+    \App\Models\Supplier::factory(10)->create();
+
+    \App\Models\Buku::factory(100)->create();
+}
 }

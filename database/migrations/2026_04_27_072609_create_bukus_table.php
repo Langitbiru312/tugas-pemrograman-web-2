@@ -18,6 +18,11 @@ return new class extends Migration
              $table->string('penulis');
              $table->string('penerbit');
              $table->date('tanggal_terbit');
+             $table->foreignId('kategori_id')
+    ->constrained('kategoris');
+
+$table->foreignId('supplier_id')
+    ->constrained('suppliers');
             $table->timestamps();
         });
     }

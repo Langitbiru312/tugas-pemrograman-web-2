@@ -11,7 +11,15 @@ class Buku extends Model
     /** @use HasFactory<\Database\Factories\BukuFactory> */
     use HasFactory;
     
+public function kategori()
+{
+    return $this->belongsTo(Kategori::class);
+}
 
+public function supplier()
+{
+    return $this->belongsTo(Supplier::class);
+}
     //protected $fillable = ['id_buku', 'judul_buku', 'penulis', 'penerbit', 'Tahun_terbit'];
     //protected $guarded = ['id'];
 }

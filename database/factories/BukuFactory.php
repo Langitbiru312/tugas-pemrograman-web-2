@@ -13,18 +13,31 @@ class BukuFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     *  mixed>
      */
-    public function definition(): array
-    {
-        return [
-            'id_buku' =>  fake()->numerify('####'),
-            'judul_buku' => fake()->randomElement(['Alvaska','Hilmy milan','Halemorra','im not antagonis',
-            'Sagala','Alan','Mariposa','Antariksa','juandara','Melodylan','Ruang hati']),
-            'penulis' => fake()->name(),
-            'penerbit' => fake()->randomElement(['Bukune','Akad','Loveble','Coconut books','Republik']),
-            'tanggal_terbit' => fake()->dateTimeBetween()
-        
-        ];
-    }
+   public function definition(): array
+{
+    return [
+
+        'id_buku' => fake()->unique()->numberBetween(1000,9999),
+
+        'judul_buku' => fake()->randomElement([
+            'Laskar Pelangi',
+            'Bumi',
+            'Mariposa',
+            'Antariksa'
+        ]),
+
+        'penulis' => fake()->name(),
+
+        'penerbit' => fake()->company(),
+
+        'tanggal_terbit' => fake()->date(),
+
+        'kategori_id' => \App\Models\Kategori::inRandomOrder()->first()->id,
+
+        'supplier_id' => \App\Models\Supplier::inRandomOrder()->first()->id,
+
+    ];
+}
 }
