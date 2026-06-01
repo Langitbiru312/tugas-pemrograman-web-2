@@ -78,7 +78,7 @@
 
                     </form>
 
-                    <a href="#" class="btn btn-info btn-sm">
+                    <a href="{{ route('supplier.show', $supplier->id) }}" class="btn btn-info btn-sm">
                         Detail
                     </a>
 

@@ -61,3 +61,8 @@ Route::delete(
     '/supplier/{supplier}',
     [SupplierController::class, 'destroy']
 )->name('supplier.destroy');
+
+Route::get(
+    '/supplier/{supplier}',
+    [SupplierController::class, 'show']
+)->name('supplier.show');

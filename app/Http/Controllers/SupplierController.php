@@ -104,4 +104,11 @@ public function destroy(Supplier $supplier)
     return redirect()->route('supplier.index')
         ->with('success', 'Data supplier berhasil dihapus');
 }
+public function show(Supplier $supplier)
+{
+    return view('supplier.show', [
+        'title' => 'Detail Data Supplier',
+        'supplier' => $supplier
+    ]);
+}
 }
