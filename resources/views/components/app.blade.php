@@ -31,6 +31,10 @@
                     href="{{ route('kategori.index') }}">
                     Kategori
                 </a>
+                <a class="nav-link {{ request()->is('supplier*') ? 'active fw-bold' : '' }}"
+                    href="{{ route('supplier.index') }}">
+                    Supplier
+                </a>
 
             </div>
 

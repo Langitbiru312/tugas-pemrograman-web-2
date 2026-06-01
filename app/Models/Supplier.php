@@ -13,7 +13,6 @@ class Supplier extends Model
         'nama_supplier',
         'alamat',
         'telepon',
-        'email',
         'kategori_id'
     ];
 

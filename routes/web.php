@@ -3,6 +3,7 @@
 use App\Http\Controllers\BukuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SupplierController;
 
 Route::get('/buku', [BukuController::class, 'index']);
 
@@ -36,5 +37,6 @@ Route::put('/kategori/{kategori}',
 
     Route::get('/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show');
 
-
+Route::get('/supplier', [SupplierController::class, 'index'])
+    ->name('supplier.index');
 

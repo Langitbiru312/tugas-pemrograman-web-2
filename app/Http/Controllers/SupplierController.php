@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Supplier;
+use App\Models\Kategori;
+use Illuminate\Http\Request;
+
+class SupplierController extends Controller
+{
+    public function index()
+    {
+        $keyword = request('keyword');
+        $kategori_id = request('kategori_id');
+
+        $suppliers = Supplier::with('kategori')
+
+            ->when($keyword, function ($query) use ($keyword) {
+
+                $query->where(
+                    'nama_supplier',
+                    'like',
+                    '%' . $keyword . '%'
+                );
+
+            })
+
+            ->when($kategori_id, function ($query) use ($kategori_id) {
+
+                $query->where(
+                    'kategori_id',
+                    $kategori_id
+                );
+
+            })
+
+            ->paginate(5)
+            ->withQueryString();
+
+        return view('supplier.index', [
+
+            'title' => 'Data Supplier',
+
+            'suppliers' => $suppliers,
+
+            'kategoris' => Kategori::all()
+
+        ]);
+    }
+}
