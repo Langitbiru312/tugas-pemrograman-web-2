@@ -88,4 +88,11 @@ public function destroy(Kategori $kategori)
         ->route('kategori.index')
         ->with('success', 'Data kategori berhasil dihapus');
 }
+public function show(Kategori $kategori)
+{
+    return view('kategori.show', [
+        'title' => 'Detail Kategori',
+        'kategori' => $kategori
+    ]);
+}
 }

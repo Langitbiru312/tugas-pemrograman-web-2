@@ -58,7 +58,9 @@
                     </button>
 
                 </form>
-                <a class="btn btn-info btn-sm">Detail</a>
+                <a href="{{ route('kategori.show', $kategori->id) }}" class="btn btn-info btn-sm">
+                    Detail
+                </a>
             </li>
         @endforeach
 

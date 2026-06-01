@@ -34,5 +34,7 @@ Route::put('/kategori/{kategori}',
     Route::delete('/kategori/{kategori}', [KategoriController::class, 'destroy'])
     ->name('kategori.destroy');
 
+    Route::get('/kategori/{kategori}', [KategoriController::class, 'show'])->name('kategori.show');
+
 
 
