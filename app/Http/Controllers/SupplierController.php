@@ -97,4 +97,11 @@ public function update(Request $request, Supplier $supplier)
     return redirect()->route('supplier.index')
         ->with('success', 'Data supplier berhasil diubah');
 }
+public function destroy(Supplier $supplier)
+{
+    $supplier->delete();
+
+    return redirect()->route('supplier.index')
+        ->with('success', 'Data supplier berhasil dihapus');
+}
 }

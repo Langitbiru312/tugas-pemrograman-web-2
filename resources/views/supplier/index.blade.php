@@ -66,9 +66,17 @@
                         Edit
                     </a>
 
-                    <a href="#" class="btn btn-danger btn-sm">
-                        Delete
-                    </a>
+                    <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" class="d-inline">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Yakin ingin menghapus data supplier ini?')">
+                            Delete
+                        </button>
+
+                    </form>
 
                     <a href="#" class="btn btn-info btn-sm">
                         Detail

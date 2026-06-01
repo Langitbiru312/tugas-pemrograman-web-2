@@ -56,3 +56,8 @@ Route::put(
     '/supplier/{supplier}',
     [SupplierController::class, 'update']
 )->name('supplier.update');
+
+Route::delete(
+    '/supplier/{supplier}',
+    [SupplierController::class, 'destroy']
+)->name('supplier.destroy');
