@@ -110,7 +110,7 @@ class BukuController extends Controller
      */
     public function destroy(Buku $buku)
     {
-         $buku->delete($buku);
+        $buku->delete();
     
     return to_route('buku.index')->withSuccess('Data berhasil di hapus');
     }

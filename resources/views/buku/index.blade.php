@@ -2,13 +2,11 @@
 
 
     <x-slot:title> {{ $title }}</x-slot>
-
-    @session('success')
+    @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-    @endsession
-
+    @endif
 
     <a class="btn btn-primary mb-3" href="{{ route('buku.create') }}" role="button">Create</a>
 
@@ -18,8 +16,8 @@
                 {{ $loop->iteration }}. {{ $buku->id_buku }} -- {{ $buku->judul_buku }} -- {{ $buku->penulis }} --
                 {{ $buku->penerbit }} --
                 {{ $buku->tanggal_terbit }}
-                <a class="btn btn-warning btn-sm" href="{{ route('buku.edit', $buku) }}" role="button">edit</a>
-                <form action="{{ route('buku.destroy', $buku) }}" method="POST" class="d-inline">
+                <a class="btn btn-warning btn-sm" href="{{ route('buku.edit', $buku->id_buku) }}" role="button">edit</a>
+                <form action="{{ route('buku.destroy', $buku->id_buku) }}" method="POST" class="d-inline">
                     @method('DELETE')
                     @csrf
 
