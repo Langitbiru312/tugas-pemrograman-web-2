@@ -75,4 +75,26 @@ public function store(Request $request)
         dd($e->getMessage());
     }
 }
+public function edit(Supplier $supplier)
+{
+    return view('supplier.edit', [
+        'title' => 'Edit Data Supplier',
+        'supplier' => $supplier,
+        'kategoris' => Kategori::all()
+    ]);
+}
+public function update(Request $request, Supplier $supplier)
+{
+    $validated = $request->validate([
+        'nama_supplier' => 'required',
+        'telepon' => 'required',
+        'alamat' => 'required',
+        'kategori_id' => 'required',
+    ]);
+
+    $supplier->update($validated);
+
+    return redirect()->route('supplier.index')
+        ->with('success', 'Data supplier berhasil diubah');
+}
 }

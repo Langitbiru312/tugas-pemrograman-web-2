@@ -46,3 +46,13 @@ Route::get('/supplier/create', [SupplierController::class, 'create'])
 
 Route::post('/supplier/store', [SupplierController::class, 'store'])
     ->name('supplier.store');
+
+    Route::get(
+    '/supplier/{supplier}/edit',
+    [SupplierController::class, 'edit']
+)->name('supplier.edit');
+
+Route::put(
+    '/supplier/{supplier}',
+    [SupplierController::class, 'update']
+)->name('supplier.update');

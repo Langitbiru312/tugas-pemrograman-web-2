@@ -62,7 +62,7 @@
 
                     {{ $supplier->kategori->nama_kategori }}
 
-                    <a href="#" class="btn btn-warning btn-sm">
+                    <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm">
                         Edit
                     </a>
 
