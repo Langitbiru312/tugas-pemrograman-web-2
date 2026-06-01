@@ -16,7 +16,7 @@
         <div class="container">
 
             <a class="navbar-brand" href="#">
-                UNITAMA
+                PERPUSTAKAAN
             </a>
 
             <div class="navbar-nav ms-auto">

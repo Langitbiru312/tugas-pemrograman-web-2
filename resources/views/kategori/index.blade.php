@@ -4,7 +4,12 @@
         Data Kategori
     </x-slot>
 
-    <a href="#" class="btn btn-primary mb-3">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <a href="{{ route('kategori.create') }}" class="btn btn-primary mb-3">
         Create
     </a>
 
@@ -31,23 +36,17 @@
 
         @foreach ($kategoris as $kategori)
             <li class="list-group-item">
-
                 {{ $kategoris->firstItem() + $loop->index }}.
 
                 {{ $kategori->nama_kategori }}
+                --
+                {{ $kategori->kode_kategori }}
+                --
+                {{ $kategori->deskripsi }}
 
-                <button class="btn btn-warning btn-sm">
-                    Edit
-                </button>
-
-                <button class="btn btn-danger btn-sm">
-                    Delete
-                </button>
-
-                <button class="btn btn-info btn-sm text-white">
-                    Detail
-                </button>
-
+                <a class="btn btn-warning btn-sm">Edit</a>
+                <a class="btn btn-danger btn-sm">Delete</a>
+                <a class="btn btn-info btn-sm">Detail</a>
             </li>
         @endforeach
 

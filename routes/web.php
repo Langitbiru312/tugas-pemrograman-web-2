@@ -17,6 +17,12 @@ Route::delete('/buku/{buku}', [BukuController::class, 'destroy'])->name('buku.de
 Route::get('/kategori', [KategoriController::class, 'index'])
     ->name('kategori.index');
 
+    Route::get('/kategori/create', [KategoriController::class, 'create'])
+    ->name('kategori.create');
+
+Route::post('/kategori/store', [KategoriController::class, 'store'])
+    ->name('kategori.store');
+
 
 
 

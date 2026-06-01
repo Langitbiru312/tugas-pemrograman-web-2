@@ -31,4 +31,26 @@ class KategoriController extends Controller
 
         ]);
     }
+
+    public function create()
+{
+    return view('kategori.create', [
+        'title' => 'Tambah Data Kategori'
+    ]);
+}
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'nama_kategori' => 'required|max:100',
+        'kode_kategori' => 'required|max:20',
+        'deskripsi' => 'required',
+    ]);
+
+    Kategori::create($validated);
+
+    return redirect()
+        ->route('kategori.index')
+        ->with('success', 'Data kategori berhasil ditambahkan');
+}
 }
