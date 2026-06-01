@@ -22,7 +22,14 @@ Route::get('/kategori', [KategoriController::class, 'index'])
 
 Route::post('/kategori/store', [KategoriController::class, 'store'])
     ->name('kategori.store');
+    
+Route::get('/kategori/{kategori}/edit',
+    [KategoriController::class, 'edit'])
+    ->name('kategori.edit');
 
+Route::put('/kategori/{kategori}',
+    [KategoriController::class, 'update'])
+    ->name('kategori.update');
 
 
 

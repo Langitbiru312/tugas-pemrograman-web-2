@@ -1,3 +1,5 @@
+@props(['title'])
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +13,6 @@
 
 <body style="background-color:#f5f5f5;">
 
-    {{-- NAVBAR --}}
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
 
@@ -36,14 +37,12 @@
         </div>
     </nav>
 
-    {{-- HEADER --}}
     <div class="bg-primary text-white text-center py-5 mb-5">
         <h1 class="fw-bold">
             {{ $title }}
         </h1>
     </div>
 
-    {{-- CONTENT --}}
     <div class="container">
         {{ $slot }}
     </div>

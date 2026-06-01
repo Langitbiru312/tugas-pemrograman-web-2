@@ -44,7 +44,9 @@
                 --
                 {{ $kategori->deskripsi }}
 
-                <a class="btn btn-warning btn-sm">Edit</a>
+                <a href="{{ route('kategori.edit', $kategori->id) }}" class="btn btn-warning btn-sm">
+                    Edit
+                </a>
                 <a class="btn btn-danger btn-sm">Delete</a>
                 <a class="btn btn-info btn-sm">Detail</a>
             </li>
