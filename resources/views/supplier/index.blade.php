@@ -1,6 +1,6 @@
 <x-app :title="$title">
 
-    <a href="#" class="btn btn-primary mb-3">
+    <a href="{{ route('supplier.create') }}" class="btn btn-primary mb-3">
         Create
     </a>
 

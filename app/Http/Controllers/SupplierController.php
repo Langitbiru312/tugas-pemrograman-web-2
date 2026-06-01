@@ -46,5 +46,33 @@ class SupplierController extends Controller
             'kategoris' => Kategori::all()
 
         ]);
+
     }
+    public function create()
+{
+    return view('supplier.create', [
+        'title' => 'Tambah Data Supplier',
+        'kategoris' => Kategori::all()
+    ]);
+}
+
+public function store(Request $request)
+{
+   $validated = $request->validate([
+    'nama_supplier' => 'required',
+    'telepon' => 'required',
+    'alamat' => 'required',
+    'kategori_id' => 'required|exists:kategoris,id',
+]);
+
+    try {
+        Supplier::create($validated);
+
+        return redirect()->route('supplier.index')
+            ->with('success', 'Data supplier berhasil ditambahkan');
+
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+    }
+}
 }
