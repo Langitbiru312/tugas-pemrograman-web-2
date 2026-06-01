@@ -47,7 +47,17 @@
                 <a href="{{ route('kategori.edit', $kategori->id) }}" class="btn btn-warning btn-sm">
                     Edit
                 </a>
-                <a class="btn btn-danger btn-sm">Delete</a>
+                <form action="{{ route('kategori.destroy', $kategori->id) }}" method="POST" class="d-inline">
+
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Yakin ingin menghapus data kategori?')">
+                        Delete
+                    </button>
+
+                </form>
                 <a class="btn btn-info btn-sm">Detail</a>
             </li>
         @endforeach

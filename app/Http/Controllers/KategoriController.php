@@ -80,4 +80,12 @@ public function update(Request $request, Kategori $kategori)
         ->route('kategori.index')
         ->with('success', 'Data kategori berhasil diubah');
 }
+public function destroy(Kategori $kategori)
+{
+    $kategori->delete();
+
+    return redirect()
+        ->route('kategori.index')
+        ->with('success', 'Data kategori berhasil dihapus');
+}
 }
