@@ -85,22 +85,26 @@ public function edit(Supplier $supplier)
         'kategoris' => Kategori::all()
     ]);
 }
+
 public function update(Request $request, Supplier $supplier)
 {
     $validated = $request->validate([
         'nama_supplier' => 'required',
         'telepon' => 'required',
-          'email' => 'required|email',
+        'email' => 'required|email',
         'alamat' => 'required',
-
-        'kategori_id' => 'required',
+        'kategori_id' => 'required|exists:kategoris,id',
     ]);
 
-    $supplier->update($validated);
+    DB::transaction(function () use ($supplier, $validated) {
+        $supplier->update($validated);
+    });
 
     return redirect()->route('supplier.index')
         ->with('success', 'Data supplier berhasil diubah');
 }
+
+
 public function destroy(Supplier $supplier)
 {
     $supplier->delete();
