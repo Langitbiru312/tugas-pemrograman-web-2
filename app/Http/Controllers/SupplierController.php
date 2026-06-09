@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Supplier;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {
@@ -58,24 +59,24 @@ class SupplierController extends Controller
 
 public function store(Request $request)
 {
-   $validated = $request->validate([
-    'nama_supplier' => 'required',
-    'telepon' => 'required',
-     'email' => 'required|email',
-    'alamat' => 'required',
-    'kategori_id' => 'required|exists:kategoris,id',
-]);
+    $validated = $request->validate([
+        'nama_supplier' => 'required',
+        'telepon' => 'required',
+        'email' => 'required|email',
+        'alamat' => 'required',
+        'kategori_id' => 'required|exists:kategoris,id',
+    ]);
 
-    try {
+    DB::transaction(function () use ($validated) {
         Supplier::create($validated);
+    });
 
-        return redirect()->route('supplier.index')
-            ->with('success', 'Data supplier berhasil ditambahkan');
-
-    } catch (\Exception $e) {
-        dd($e->getMessage());
-    }
+    return redirect()->route('supplier.index')
+        ->with('success', 'Data supplier berhasil ditambahkan');
 }
+
+
+
 public function edit(Supplier $supplier)
 {
     return view('supplier.edit', [
