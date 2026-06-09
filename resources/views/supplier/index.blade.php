@@ -4,13 +4,9 @@
         Create
     </a>
 
-    <div class="d-flex justify-content-between mb-3">
-
-
-        <a href="{{ route('supplier.trash') }}" class="btn btn-danger">
-            Trash
-        </a>
-    </div>
+    <a href="{{ route('supplier.trash') }}" class="btn btn-danger mb-3">
+        Trash
+    </a>
 
     <form action="{{ route('supplier.index') }}" method="GET">
 

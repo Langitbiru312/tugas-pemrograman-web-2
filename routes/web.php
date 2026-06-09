@@ -69,3 +69,7 @@ Route::get(
 
 Route::get('/supplier-trash', [SupplierController::class, 'trash'])
     ->name('supplier.trash');
+
+
+Route::put('/supplier/{id}/restore', [SupplierController::class, 'restore'])
+    ->name('supplier.restore');

@@ -128,4 +128,15 @@ public function trash()
         'suppliers' => Supplier::onlyTrashed()->paginate(5)
     ]);
 }
+
+public function restore($id)
+{
+    Supplier::onlyTrashed()
+        ->where('id', $id)
+        ->restore();
+
+    return redirect()
+        ->route('supplier.trash')
+        ->with('success', 'Data supplier berhasil direstore');
+}
 }
