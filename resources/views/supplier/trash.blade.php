@@ -1,5 +1,8 @@
 <x-app :title="$title">
-    <div class="d-flex justify-content-between mb-3">
+
+
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
 
         <h3>Data Supplier Trash</h3>
 
@@ -24,7 +27,7 @@
                         <th>Telepon</th>
                         <th>Email</th>
                         <th>Deleted At</th>
-                        <th width="150">Aksi</th>
+                        <th width="250">Aksi</th>
                     </tr>
 
                 </thead>
@@ -46,13 +49,27 @@
 
                             <td>
 
-                                <form action="{{ route('supplier.restore', $supplier->id) }}" method="POST">
+                                <form action="{{ route('supplier.restore', $supplier->id) }}" method="POST"
+                                    class="d-inline">
 
                                     @csrf
                                     @method('PUT')
 
                                     <button type="submit" class="btn btn-success btn-sm">
                                         Restore
+                                    </button>
+
+                                </form>
+
+                                <form action="{{ route('supplier.forceDelete', $supplier->id) }}" method="POST"
+                                    class="d-inline">
+
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus permanen data ini?')">
+                                        Hapus Permanen
                                     </button>
 
                                 </form>
@@ -66,7 +83,9 @@
                         <tr>
 
                             <td colspan="6" class="text-center py-3">
+
                                 Data trash kosong
+
                             </td>
 
                         </tr>
@@ -81,8 +100,10 @@
     </div>
 
     <div class="mt-3">
+
         {{ $suppliers->links() }}
+
     </div>
-    ```
+
 
 </x-app>

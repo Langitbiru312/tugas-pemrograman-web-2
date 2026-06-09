@@ -139,4 +139,15 @@ public function restore($id)
         ->route('supplier.trash')
         ->with('success', 'Data supplier berhasil direstore');
 }
+
+public function forceDelete($id)
+{
+    Supplier::onlyTrashed()
+        ->where('id', $id)
+        ->forceDelete();
+
+    return redirect()
+        ->route('supplier.trash')
+        ->with('success', 'Data supplier berhasil dihapus permanen');
+}
 }

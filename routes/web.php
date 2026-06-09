@@ -73,3 +73,6 @@ Route::get('/supplier-trash', [SupplierController::class, 'trash'])
 
 Route::put('/supplier/{id}/restore', [SupplierController::class, 'restore'])
     ->name('supplier.restore');
+
+    Route::delete('/supplier/{id}/force-delete', [SupplierController::class, 'forceDelete'])
+    ->name('supplier.forceDelete');
