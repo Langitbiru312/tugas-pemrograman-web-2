@@ -119,4 +119,13 @@ public function show(Supplier $supplier)
         'supplier' => $supplier
     ]);
 }
+
+
+public function trash()
+{
+    return view('supplier.trash', [
+        'title' => 'Data Supplier Trash',
+        'suppliers' => Supplier::onlyTrashed()->paginate(5)
+    ]);
+}
 }

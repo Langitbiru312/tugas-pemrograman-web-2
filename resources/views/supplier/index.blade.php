@@ -4,20 +4,27 @@
         Create
     </a>
 
+    <div class="d-flex justify-content-between mb-3">
+
+
+        <a href="{{ route('supplier.trash') }}" class="btn btn-danger">
+            Trash
+        </a>
+    </div>
+
     <form action="{{ route('supplier.index') }}" method="GET">
 
         <div class="row mb-3">
 
             <div class="col-md-7">
-
-                <input type="text" name="keyword" class="form-control" placeholder="Search supplier..."
+                <input type="text" name="keyword" class="form-control" placeholder="Cari supplier..."
                     value="{{ request('keyword') }}">
-
             </div>
 
             <div class="col-md-3">
 
                 <select name="kategori_id" class="form-select">
+
                     <option value="">-- Semua Kategori --</option>
 
                     @foreach ($kategoris->unique('nama_kategori') as $kategori)
@@ -43,66 +50,95 @@
 
     </form>
 
-    <div class="card">
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h5 class="mb-0">Data Supplier</h5>
+        </div>
 
         <div class="card-body p-0">
 
-            @forelse ($suppliers as $supplier)
-                <div class="border-bottom p-3">
+            <table class="table table-striped table-hover mb-0">
 
-                    {{ $loop->iteration }}.
+                <thead class="table-dark">
 
-                    {{ $supplier->nama_supplier }}
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Supplier</th>
+                        <th>Telepon</th>
+                        <th>Email</th>
+                        <th>Kategori</th>
+                        <th width="250">Aksi</th>
+                    </tr>
 
-                    --
+                </thead>
 
-                    {{ $supplier->telepon }}
+                <tbody>
 
-                    --
-                    {{ $supplier->email }}
+                    @forelse ($suppliers as $supplier)
+                        <tr>
 
-                    --
-                    {{ $supplier->kategori->nama_kategori }}
+                            <td>{{ $loop->iteration }}</td>
 
-                    <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm">
-                        Edit
-                    </a>
+                            <td>{{ $supplier->nama_supplier }}</td>
 
-                    <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" class="d-inline">
+                            <td>{{ $supplier->telepon }}</td>
 
-                        @csrf
-                        @method('DELETE')
+                            <td>{{ $supplier->email }}</td>
 
-                        <button type="submit" class="btn btn-danger btn-sm"
-                            onclick="return confirm('Yakin ingin menghapus data supplier ini?')">
-                            Delete
-                        </button>
+                            <td>{{ $supplier->kategori->nama_kategori }}</td>
 
-                    </form>
+                            <td>
 
-                    <a href="{{ route('supplier.show', $supplier->id) }}" class="btn btn-info btn-sm">
-                        Detail
-                    </a>
+                                <a href="{{ route('supplier.show', $supplier->id) }}" class="btn btn-info btn-sm">
+                                    Detail
+                                </a>
 
-                </div>
+                                <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
 
-            @empty
+                                <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST"
+                                    class="d-inline">
 
-                <div class="p-3 text-center">
+                                    @csrf
+                                    @method('DELETE')
 
-                    Data supplier tidak ditemukan
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus data supplier ini?')">
+                                        Delete
+                                    </button>
 
-                </div>
-            @endforelse
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                    @empty
+
+                        <tr>
+
+                            <td colspan="6" class="text-center py-3">
+                                Data supplier tidak ditemukan
+                            </td>
+
+                        </tr>
+                    @endforelse
+
+                </tbody>
+
+            </table>
 
         </div>
 
     </div>
 
     <div class="mt-3">
-
         {{ $suppliers->links() }}
-
     </div>
+    ```
+
+
 
 </x-app>

@@ -66,3 +66,6 @@ Route::get(
     '/supplier/{supplier}',
     [SupplierController::class, 'show']
 )->name('supplier.show');
+
+Route::get('/supplier-trash', [SupplierController::class, 'trash'])
+    ->name('supplier.trash');
