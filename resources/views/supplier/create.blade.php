@@ -21,6 +21,17 @@
                 </div>
 
                 <div class="mb-3">
+                    <label>Email</label>
+
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+
+                    @error('email')
+                        <small class="text-danger">
+                            {{ $message }}
+                        </small>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     <label>Alamat</label>
                     <textarea name="alamat" class="form-control">{{ old('alamat') }}</textarea>
                 </div>
@@ -34,6 +45,7 @@
                         @foreach ($kategoris as $kategori)
                             <option value="{{ $kategori->id }}">
                                 {{ $kategori->nama_kategori }}
+
                             </option>
                         @endforeach
                     </select>

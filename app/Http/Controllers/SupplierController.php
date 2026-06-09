@@ -61,6 +61,7 @@ public function store(Request $request)
    $validated = $request->validate([
     'nama_supplier' => 'required',
     'telepon' => 'required',
+     'email' => 'required|email',
     'alamat' => 'required',
     'kategori_id' => 'required|exists:kategoris,id',
 ]);
@@ -88,7 +89,9 @@ public function update(Request $request, Supplier $supplier)
     $validated = $request->validate([
         'nama_supplier' => 'required',
         'telepon' => 'required',
+          'email' => 'required|email',
         'alamat' => 'required',
+
         'kategori_id' => 'required',
     ]);
 

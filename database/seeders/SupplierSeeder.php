@@ -20,6 +20,8 @@ class SupplierSeeder extends Seeder
 
                 'telepon' => fake()->phoneNumber(),
 
+                 'email' => fake()->unique()->safeEmail(),
+
                 'kategori_id' => Kategori::inRandomOrder()->first()->id,
 
             ]);

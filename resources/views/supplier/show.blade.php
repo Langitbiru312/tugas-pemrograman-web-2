@@ -13,6 +13,12 @@
         </tr>
 
         <tr>
+            <th>Email</th>
+            <td>{{ $supplier->email }}</td>
+        </tr>
+
+
+        <tr>
             <th>Alamat</th>
             <td>{{ $supplier->alamat }}</td>
         </tr>

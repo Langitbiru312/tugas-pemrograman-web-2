@@ -59,7 +59,9 @@
                     {{ $supplier->telepon }}
 
                     --
+                    {{ $supplier->email }}
 
+                    --
                     {{ $supplier->kategori->nama_kategori }}
 
                     <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm">
